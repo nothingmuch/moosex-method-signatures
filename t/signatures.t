@@ -108,14 +108,17 @@ my @signatures;
     [ 0, ':$arg? = 42', 'Default+ Optional Named' ],
     [ 0, ':$arg! = 42', 'Default+ Required Named' ],                   #50
 
+    [ 0, ':$arg = $self->foo }',     'Dependent Default + Optional Named' ], # 51
+    [ 0, ':$arg = { $self->foo } }', 'Dependent Default + Optional Named' ], # 52
+
     # invocant tests.
-    [ 0, '$self: $arg',   'Invocant + Positional ' ],                  #51
+    [ 0, '$self: $arg',   'Invocant + Positional ' ],                  #53
     [ 0, '$class: $arg',  'Nondefault Invocant + Positional ' ],
-    [ 0, '$self: :$arg',  'Invocant + Named ' ],                       #53
+    [ 0, '$self: :$arg',  'Invocant + Named ' ],                       #55
     [ 0, '$class: :$arg', 'Nondefault Invocant + Named ' ],
 
     # label tests .
-    [ 0, ':foo($arg)', 'Label' ],                                      #55
+    [ 0, ':foo($arg)', 'Label' ],                                      #57
 );
 
 plan tests => $#signatures + 1;
